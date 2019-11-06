@@ -1,1 +1,3 @@
-SpringBoot
+# SpringBoot
+### 이 레포지트리는 SpringBoot를 연습하면서 정리하는 공간입니다.
+### 첫 시작부터, 조금씩 정리해 나아가는 공간입니다.
