@@ -10,7 +10,7 @@ public class JoinService {
 	public void joinUser(HttpServletRequest request, UsersRepository usersRepository) {
 		String userID = request.getParameter("user_id");
 		String userPassword = request.getParameter("user_pw");
-		String userName = request.getParameter("user_pw"); 
+		String userName = request.getParameter("user_name"); 
 		
 		Users users = new Users();
 		users.setUser_id(userID);

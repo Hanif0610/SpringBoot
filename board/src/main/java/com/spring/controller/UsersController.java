@@ -16,14 +16,14 @@ public class UsersController {
 	private UsersRepository usersRepository;
 	
 	@PostMapping(value = "/joinRequest")
-	public String joinrequest(HttpServletRequest request) {
+	public String joinRequest(HttpServletRequest request) {
 		JoinService joinService = new JoinService();
 		joinService.joinUser(request, usersRepository);
 		return "index";
 	}
 	
 	@PostMapping(value = "/loginRequest")
-	public String loginrequest() {
+	public String loginRequest() {
 		return "index";
 	}
 }
