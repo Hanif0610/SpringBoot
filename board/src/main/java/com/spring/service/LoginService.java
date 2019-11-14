@@ -17,7 +17,7 @@ public class LoginService {
     private UsersRepository usersRepository;
 
     @Autowired
-    HttpSession session;
+    private HttpSession session;
 
     //아이디 또는 비번을 입력하지 않고 submit하면 로그인이 되지 않고 다시 login창으로 가게 함
     public String login(String userID, String userPassword) {
