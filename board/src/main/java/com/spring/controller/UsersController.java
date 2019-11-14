@@ -11,10 +11,10 @@ import com.spring.service.JoinService;
 
 @Controller
 public class UsersController {
-	
+
 	@Autowired
 	private UsersRepository usersRepository;
-	
+
 	@PostMapping(value = "/joinRequest")
 	public String joinRequest(HttpServletRequest request) {
 		JoinService joinService = new JoinService();
