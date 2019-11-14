@@ -10,21 +10,23 @@ public class JoinService {
 
 	@Autowired
 	private UsersRepository usersRepository;
-	
-	public UserPasswordHashClass userPasswordHashClass;
+
+	@Autowired
+	private UserPasswordHashClass userPasswordHashClass;
 
 	public String joinUser(String userID, String userPassword, String userName) {
 
+		//아이디 또는 비번을 입력하지 않고 submit하면 로그인이 되지 않고 다시 join창으로 가게 함
 		if(userID.equals("") || userPassword.equals("") || userName.equals("")) {
 			return "join";
 		}
 
 		Users users = new Users();
-		users.setUser_id(userID);
+		users.setUserID(userID);
 
 		String hashedPassword = userPasswordHashClass.getSHA256(userPassword);
-		users.setUser_pw(hashedPassword);
-		users.setUser_name(userName);
+		users.setUserPassword(hashedPassword);
+		users.setUserName(userName);
 
 		usersRepository.save(users);
 		return "index";
