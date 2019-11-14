@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>로그인 페이지</title>
+    <title>스프링부트 게시판</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -57,8 +57,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/freeboard">Freeboard</a></li>
-<!--                <li><a href="#">Projects</a></li>-->
-<!--                <li><a href="#">Contact</a></li>-->
+                <!--				<li><a href="#">Projects</a></li>-->
+                <!--				<li><a href="#">Contact</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${session.loginUser==null}"><a href="/loginPage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -77,13 +77,24 @@
             <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Login</h1>
-            <hr>
-            <form action="/loginRequest" method="post">
-                <input type="text" placeholder="아이디" name="user_id"></input><br/><br/>
-                <input type="password" placeholder="비밀번호" name="user_pw"></input><br/><br/>
-                <input type="submit" value="로그인하기">
-            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>글 번호</th>
+                        <th>글 제목</th>
+                        <th>작성자</th>
+                    </tr>
+                    <th:block th:if="${session.boardList!=null}">
+                        <th:block th:each="board:${session.boardList"}>
+                            <tr>
+                                <td><span th:text="${board.getFreeID()}"></span></td>
+                                <td><span th:text="${board.getTitle()}"></span></td>
+                                <td><span th:text="${board.getWriter()}"></span></td>
+                            </tr>
+                        </th:block>
+                    </th:block>
+                </thead>
+            </table>
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">
