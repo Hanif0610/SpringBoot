@@ -1,22 +1,32 @@
 package com.spring.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.spring.model.Users;
 import com.spring.repository.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class JoinService {
+
+	@Autowired
+	private UsersRepository usersRepository;
 	
-	public void joinUser(HttpServletRequest request, UsersRepository usersRepository) {
-		String userID = request.getParameter("user_id");
-		String userPassword = request.getParameter("user_pw");
-		String userName = request.getParameter("user_name"); 
-		
+	public UserPasswordHashClass userPasswordHashClass;
+
+	public String joinUser(String userID, String userPassword, String userName) {
+
+		if(userID.equals("") || userPassword.equals("") || userName.equals("")) {
+			return "join";
+		}
+
 		Users users = new Users();
 		users.setUser_id(userID);
-		users.setUser_pw(userPassword);
+
+		String hashedPassword = userPasswordHashClass.getSHA256(userPassword);
+		users.setUser_pw(hashedPassword);
 		users.setUser_name(userName);
-		
+
 		usersRepository.save(users);
+		return "index";
 	}
 }
