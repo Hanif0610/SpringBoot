@@ -1,9 +1,10 @@
 package com.spring.model;
 
 public class UserSignUp {
+
     private String userID;
     private String userPassword;
-        private String userName;
+    private String userName;
     private String userEmail;
 
     public String getUserID() {
