@@ -22,7 +22,7 @@ public class UserDAO {
             Class.forName(path);
             connection = DriverManager.getConnection(dbUrl, dbId, dbPw); //연결 수단
             statement = connection.createStatement(); //매개체(기차)
-            query = String.format("insert into server.users value('%s' '%s' '%s' '%s')",
+            query = String.format("insert into server.users(id, pw, name, email) value('%s', '%s', '%s', '%s')",
                     userID, userPw, userName, userEmail);
             statement.executeUpdate(query);
 
