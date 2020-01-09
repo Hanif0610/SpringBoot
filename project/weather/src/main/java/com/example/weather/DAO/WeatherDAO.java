@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class WeatherDAO {
     private static final String db = "com.mysql.cj.jdbc.Driver";
-    private final String dbUrl = "jdbc:mysql://10.156.147.210:3306/project_data_db?user=root&password=Pass&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+    private final String dbUrl = "jdbc:mysql://10.156.147.210:3306/project_data_db?user=root&password=Pass&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&amp;autoReconnection=true";
     private final String dbID = "root";
     private final String dbPw = "8015";
 
