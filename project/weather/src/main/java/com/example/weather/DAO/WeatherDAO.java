@@ -24,9 +24,12 @@ public class WeatherDAO {
             conn = DriverManager.getConnection(dbUrl, dbID, dbPw);
             stmt = conn.createStatement();
 
-            query = String.format("select * from data where x = '%d' and y = '%d'", wm.getX(), wm.getY());
+            query = String.format("select * from data where x = '%d' and y = '%d' and hour = '%d' and hour = '%d' and hour = '%d'",
+                    wm.getX(), wm.getY(), wm.getMh(), wm.getAh(), wm.getEh());
             rs = stmt.executeQuery(query);
-            return rs;
+            if(rs.next()) {
+                return rs;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
