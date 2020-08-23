@@ -10,9 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -35,11 +33,6 @@ public class JwtTokenProvider {
     private String prefix;
 
     private final AuthDetailsService authDetailsService;
-
-//    @PostConstruct
-//    private void init() {
-//        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-//    }
 
     public String generateAccessToken(String data) {
         return Jwts.builder()
