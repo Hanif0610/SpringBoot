@@ -1,12 +1,12 @@
 package com.crud.controller;
 
 import com.crud.domain.request.SignUp;
-import com.crud.domain.response.Result;
-import com.crud.service.user.UserServiceImpl;
+import com.crud.service.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -15,17 +15,10 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
-    private final UserServiceImpl userService;
-
-    @GetMapping(value = "/")
-    public String home() {
-
-        return "home";
-    }
+    private final UserService userService;
 
     @PostMapping(value = "/signup")
-    public ResponseEntity<Result> signIn(@RequestBody @Valid SignUp signUp) {
+    public void signIn(@RequestBody @Valid SignUp signUp) {
         userService.signUp(signUp);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
