@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
                     .email(email)
                     .password(password)
                     .name(name)
-                    .type(0)
                     .build()
         );
 
